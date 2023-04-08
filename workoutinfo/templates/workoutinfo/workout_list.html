@@ -1,0 +1,18 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Workout List
+{% endblock %}
+
+{% block content %}
+    <h2>Workout List</h2>
+    <ul>
+        {% for workout in workout_list %}
+            <li>
+                <a href="">{{ workout }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no workouts available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

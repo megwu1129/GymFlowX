@@ -1,0 +1,18 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Payment List
+{% endblock %}
+
+{% block content %}
+    <h2>Payment List</h2>
+    <ul>
+        {% for payment in payment_list %}
+            <li>
+                <a href="">{{ payment }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no payments available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

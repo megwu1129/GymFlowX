@@ -1,0 +1,18 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Membership List
+{% endblock %}
+
+{% block content %}
+    <h2>Membership List</h2>
+    <ul>
+        {% for membership in membership_list %}
+            <li>
+                <a href="">{{ membership }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no memberships available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

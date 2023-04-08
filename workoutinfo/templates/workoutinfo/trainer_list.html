@@ -1,0 +1,18 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Trainer List
+{% endblock %}
+
+{% block content %}
+    <h2>Trainer List</h2>
+    <ul>
+        {% for trainer in trainer_list %}
+            <li>
+                <a href="">{{ trainer }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no trainers available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -15,7 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from workoutinfo.views import (
+    member_list_view,
+    trainer_list_view,
+    workoutplan_list_view,
+    workout_list_view,
+    nutritionplan_list_view,
+    membership_list_view,
+    payment_list_view,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('member/', member_list_view),
+    path('trainer/', trainer_list_view),
+    path('workoutplan/', workoutplan_list_view),
+    path('workout/', workout_list_view),
+    path('nutritionplan/', nutritionplan_list_view),
+    path('membership/', membership_list_view),
+    path('payment/', payment_list_view)
 ]

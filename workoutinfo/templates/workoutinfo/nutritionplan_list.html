@@ -1,0 +1,18 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Nutrition Plan List
+{% endblock %}
+
+{% block content %}
+    <h2>Nutrition Plan List</h2>
+    <ul>
+        {% for nutritionplan in nutritionplan_list %}
+            <li>
+                <a href="">{{ nutritionplan }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no nutrition plans available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
