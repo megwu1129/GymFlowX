@@ -1,0 +1,66 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Workout Plan - {{ workoutplan }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ workoutplan }}</h2>
+{#    <ul class="ezu-button-list">#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_update_url }}"#}
+{#             class="button button-primary">#}
+{#            Edit Registration</a></li>#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_delete_url }}"#}
+{#             class="button button-primary">#}
+{#            Delete Registration</a></li>#}
+{#    </ul>#}
+    <section>
+        <table>
+            <tr>
+                <th>Member:</th>
+{#                <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>#}
+                <td><a href="">{{ workoutplan.member }}</a></td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <th>Workout Name:</th>
+                <td>{{ workoutplan.name }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ workoutplan.description }}</td>
+            </tr>
+            <tr>
+                <th>Start Date:</th>
+                <td>{{ workoutplan.start_date }}</td>
+            </tr>
+            <tr>
+                <th>End Date:</th>
+                <td>{{ workoutplan.end_date }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Workout</h3>
+        <ul>
+            {% for workout in workout_list %}
+                <li>
+{#                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>#}
+                    <a href="">{{ workout }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no workouts for this workoutplan.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+
+
+{% endblock %}

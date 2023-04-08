@@ -1,0 +1,76 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Trainer - {{ trainer }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ trainer }}</h2>
+{#    <ul class="ezu-button-list">#}
+{#        <li>#}
+{#          <a href="{{ instructor.get_update_url }}"#}
+{#             class="button button-primary">#}
+{#            Edit Instructor</a></li>#}
+{#        <li>#}
+{#          <a href="{{ instructor.get_delete_url }}"#}
+{#             class="button button-primary">#}
+{#            Delete Instructor</a></li>#}
+{#    </ul>#}
+
+    <section>
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td>{{ trainer.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>{{ trainer.last_name }}</td>
+            </tr>
+            {% if trainer.disambiguator %}
+                <tr>
+                    <th>Disambiguator:</th>
+                    <td>{{ trainer.disambiguator }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <th>Gender:</th>
+                <td>{{ trainer.gender }}</td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td>{{ trainer.phone_number }}</td>
+            </tr>
+        </table>
+    </section>
+
+
+    <section>
+        <h3>Workout</h3>
+        <ul>
+            {% for workout in workout_list %}
+                <li>
+{#                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>#}
+                    <a href="">{{ workout }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no workouts for this trainer.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h3>Nutrition Plan</h3>
+        <ul>
+            {% for nutritionplan in nutritionplan_list %}
+                <li>
+{#                    <a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a>#}
+                    <a href="">{{ nutritionplan }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no nutritionplans for this trainer.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+{% endblock %}

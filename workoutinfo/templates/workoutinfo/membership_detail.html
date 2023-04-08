@@ -1,0 +1,58 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Membership - {{ membership }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ membership }}</h2>
+{#    <ul class="ezu-button-list">#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_update_url }}"#}
+{#             class="button button-primary">#}
+{#            Edit Registration</a></li>#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_delete_url }}"#}
+{#             class="button button-primary">#}
+{#            Delete Registration</a></li>#}
+{#    </ul>#}
+    <section>
+        <table>
+            <tr>
+                <th>Member:</th>
+{#                <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>#}
+                <td><a href="">{{ membership.member }}</a></td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <th>Start Date:</th>
+                <td>{{ membership.start_date }}</td>
+            </tr>
+            <tr>
+                <th>End Date:</th>
+                <td>{{ membership.end_date }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Payment</h3>
+        <ul>
+            {% for payment in payment_list %}
+                <li>
+{#                    <a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a>#}
+                    <a href="">{{ payment }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no payments for this membership.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+
+
+{% endblock %}

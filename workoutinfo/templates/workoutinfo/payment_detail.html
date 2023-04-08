@@ -1,0 +1,46 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Payment - {{ payment }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ payment }}</h2>
+{#    <ul class="ezu-button-list">#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_update_url }}"#}
+{#             class="button button-primary">#}
+{#            Edit Registration</a></li>#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_delete_url }}"#}
+{#             class="button button-primary">#}
+{#            Delete Registration</a></li>#}
+{#    </ul>#}
+    <section>
+        <table>
+            <tr>
+                <th>Membership:</th>
+{#                <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>#}
+                <td><a href="">{{ payment.membership }}</a></td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <th>Amount:</th>
+                <td>{{ payment.amount }}</td>
+            </tr>
+            <tr>
+                <th>Payment Method:</th>
+                <td>{{ payment.payment_method }}</td>
+            </tr>
+            <tr>
+                <th>Payment Date:</th>
+                <td>{{ payment.payment_date }}</td>
+            </tr>
+        </table>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Nutrition Plan - {{ nutritionplan }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ nutritionplan }}</h2>
+{#    <ul class="ezu-button-list">#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_update_url }}"#}
+{#             class="button button-primary">#}
+{#            Edit Registration</a></li>#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_delete_url }}"#}
+{#             class="button button-primary">#}
+{#            Delete Registration</a></li>#}
+{#    </ul>#}
+    <section>
+        <table>
+            <tr>
+                <th>Member:</th>
+{#                <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>#}
+                <td><a href="">{{ nutritionplan.member }}</a></td>
+            </tr>
+            <tr>
+                <th>Trainer:</th>
+{#                <td><a href="{{ section.get_absolute_url }}">{{ section }}</a></td>#}
+                <td><a href="">{{ nutritionplan.trainer }}</a></td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <th>Nutrition Name:</th>
+                <td>{{ nutritionplan.name }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ nutritionplan.description }}</td>
+            </tr>
+            <tr>
+                <th>Meal Timing:</th>
+                <td>{{ nutritionplan.meal_timing }}</td>
+            </tr>
+        </table>
+    </section>
+
+
+
+{% endblock %}

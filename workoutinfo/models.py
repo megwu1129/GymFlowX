@@ -172,6 +172,3 @@ class Payment(models.Model):
 
     class Meta:
         ordering = ['member', 'payment_date']
-        constraints = [
-            UniqueConstraint(fields=['membership'], name='unique_payment')
-        ]

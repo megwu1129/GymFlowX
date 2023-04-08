@@ -1,0 +1,62 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Workout - {{ workout }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ workout }}</h2>
+{#    <ul class="ezu-button-list">#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_update_url }}"#}
+{#             class="button button-primary">#}
+{#            Edit Registration</a></li>#}
+{#        <li>#}
+{#          <a href="{{ nutrition.get_delete_url }}"#}
+{#             class="button button-primary">#}
+{#            Delete Registration</a></li>#}
+{#    </ul>#}
+    <section>
+        <table>
+            <tr>
+                <th>Member:</th>
+{#                <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>#}
+                <td><a href="">{{ member }}</a></td>
+            </tr>
+            <tr>
+                <th>Trainer:</th>
+{#                <td><a href="{{ section.get_absolute_url }}">{{ section }}</a></td>#}
+                <td><a href="">{{ trainer }}</a></td>
+            </tr>
+            <tr>
+                <th>Workout Plan:</th>
+{#                <td><a href="{{ section.get_absolute_url }}">{{ section }}</a></td>#}
+                <td><a href="">{{ workoutplan }}</a></td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <th>Workout Date:</th>
+                <td>{{ date }}</td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td>{{ name }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ description }}</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>{{ duration }}</td>
+            </tr>
+        </table>
+    </section>
+
+
+
+{% endblock %}
