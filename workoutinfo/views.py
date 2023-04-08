@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from workoutinfo.models import Member, Trainer, WorkoutPlan, Workout, NutritionPlan, Membership, Payment
 
 
