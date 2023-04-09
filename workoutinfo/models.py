@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from django.db.models import UniqueConstraint
+from django.urls import reverse
 
 
 # Create your models here.
@@ -33,6 +34,11 @@ class Member(models.Model):
         else:
             result = '%s, %s (%s)' % (self.last_name, self.first_name, self.disambiguator)
         return result
+
+    def get_absolute_url(self):
+        return reverse('workoutinfo_member_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['last_name', 'first_name', 'disambiguator']
@@ -67,6 +73,11 @@ class Trainer(models.Model):
             result = '%s, %s (%s)' % (self.last_name, self.first_name, self.disambiguator)
         return result
 
+    def get_absolute_url(self):
+        return reverse('workoutinfo_trainer_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
     class Meta:
         ordering = ['last_name', 'first_name', 'disambiguator']
         constraints = [
@@ -84,6 +95,11 @@ class WorkoutPlan(models.Model):
 
     def __str__(self):
         return f"{self.member} - {self.name}"
+
+    def get_absolute_url(self):
+        return reverse('workoutinfo_workoutplan_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['member', 'name']
@@ -104,6 +120,11 @@ class Workout(models.Model):
 
     def __str__(self):
         return f"{self.member} - {self.name} / {self.date} / {self.trainer}"
+
+    def get_absolute_url(self):
+        return reverse('workoutinfo_workout_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['member', 'name', 'date']
@@ -128,6 +149,11 @@ class NutritionPlan(models.Model):
     def __str__(self):
         return f"{self.member} - {self.name} / {self.trainer}"
 
+    def get_absolute_url(self):
+        return reverse('workoutinfo_nutritionplan_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
+
     class Meta:
         ordering = ['member', 'name', 'trainer']
         constraints = [
@@ -143,6 +169,11 @@ class Membership(models.Model):
 
     def __str__(self):
         return f"{self.member} / {self.start_date} ~ {self.end_date}"
+
+    def get_absolute_url(self):
+        return reverse('workoutinfo_membership_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['member', 'start_date', 'end_date']
@@ -169,6 +200,11 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.member} / {self.membership.start_date}~  {self.membership.end_date}"
+    
+    def get_absolute_url(self):
+        return reverse('workoutinfo_payment_detail_urlpattern',
+                       kwargs={'pk': self.pk}
+                       )
 
     class Meta:
         ordering = ['member', 'payment_date']

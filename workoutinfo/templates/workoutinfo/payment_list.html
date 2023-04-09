@@ -9,7 +9,7 @@
     <ul>
         {% for payment in payment_list %}
             <li>
-                <a href="">{{ payment }}</a>
+                <a href="{{ payment.get_absolute_url }}">{{ payment }}</a>
             </li>
         {% empty %}
             <li><em>There are currently no payments available.</em></li>

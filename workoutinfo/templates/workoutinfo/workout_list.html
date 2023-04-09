@@ -9,7 +9,7 @@
     <ul>
         {% for workout in workout_list %}
             <li>
-                <a href="">{{ workout }}</a>
+                <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>
             </li>
         {% empty %}
             <li><em>There are currently no workouts available.</em></li>

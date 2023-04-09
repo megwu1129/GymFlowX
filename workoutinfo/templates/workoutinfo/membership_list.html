@@ -9,7 +9,7 @@
     <ul>
         {% for membership in membership_list %}
             <li>
-                <a href="">{{ membership }}</a>
+                <a href="{{ membership.get_absolute_url }}">{{ membership }}</a>
             </li>
         {% empty %}
             <li><em>There are currently no memberships available.</em></li>

@@ -9,7 +9,7 @@
     <ul>
         {% for workoutplan in workoutplan_list %}
             <li>
-                <a href="">{{ workoutplan }}</a>
+                <a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a>
             </li>
         {% empty %}
             <li><em>There are currently no workout plans available.</em></li>
