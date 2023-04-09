@@ -1,0 +1,16 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Create Member
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'workoutinfo_member_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button button-primary">
+        Create Member</button>
+    </form>
+{% endblock %}
