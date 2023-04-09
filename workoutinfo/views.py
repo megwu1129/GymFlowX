@@ -125,10 +125,12 @@ class NutritionPlanDetail(View):
             NutritionPlan,
             pk=pk
         )
+        member = nutritionplan.member
+        trainer = nutritionplan.trainer
         return render(
             request,
             'workoutinfo/nutritionplan_detail.html',
-            {'nutritionplan': nutritionplan}
+            {'nutritionplan': nutritionplan, 'member': member, 'trainer': trainer}
         )
 
 

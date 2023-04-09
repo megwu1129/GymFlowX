@@ -49,8 +49,7 @@
         <ul>
             {% for membership in membership_list %}
                 <li>
-{#                    <a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a>#}
-                    <a href="">{{ membership }}</a>
+                    <a href="{{ membership.get_absolute_url }}">{{ membership }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no memberships for this member.</em></li>
@@ -63,8 +62,7 @@
         <ul>
             {% for workoutplan in workoutplan_list %}
                 <li>
-{#                    <a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a>#}
-                    <a href="">{{ workoutplan }}</a>
+                    <a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no workoutplans for this member.</em></li>
@@ -77,8 +75,7 @@
         <ul>
             {% for workout in workout_list %}
                 <li>
-{#                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>#}
-                    <a href="">{{ workout }}</a>
+                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no workouts for this member.</em></li>
@@ -91,8 +88,7 @@
         <ul>
             {% for nutritionplan in nutritionplan_list %}
                 <li>
-{#                    <a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a>#}
-                    <a href="">{{ nutritionplan }}</a>
+                    <a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no nutritionplans for this member.</em></li>

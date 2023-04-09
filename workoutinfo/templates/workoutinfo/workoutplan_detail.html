@@ -20,8 +20,7 @@
         <table>
             <tr>
                 <th>Member:</th>
-{#                <td><a href="{{ student.get_absolute_url }}">{{ student }}</a></td>#}
-                <td><a href="">{{ workoutplan.member }}</a></td>
+                <a href="{{ member.get_absolute_url }}">{{ member }}</a>
             </tr>
         </table>
     </section>
@@ -52,8 +51,7 @@
         <ul>
             {% for workout in workout_list %}
                 <li>
-{#                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>#}
-                    <a href="">{{ workout }}</a>
+                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>
                 </li>
             {% empty %}
                 <li><em>There are currently no workouts for this workoutplan.</em></li>
