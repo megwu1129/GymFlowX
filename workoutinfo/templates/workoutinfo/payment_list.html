@@ -6,6 +6,11 @@
 
 {% block content %}
     <h2>Payment List</h2>
+    <div>
+      <a href="{% url 'workoutinfo_payment_create_urlpattern' %}"
+      class="button button-primary">
+        Create New Payment</a>
+    </div>
     <ul>
         {% for payment in payment_list %}
             <li>

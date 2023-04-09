@@ -110,7 +110,7 @@ class WorkoutPlan(models.Model):
 
 class Workout(models.Model):
     workout_id = models.AutoField(primary_key=True)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField()
     name = models.CharField(max_length=255)
     description = models.TextField()
     duration = models.IntegerField(help_text='Enter duration in minutes')
@@ -192,14 +192,14 @@ class Payment(models.Model):
         ('other', 'Other'),
     )
     payment_id = models.AutoField(primary_key=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, help_text='Enter the amount in USD')
     payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES)
     payment_date = models.DateField(auto_now_add=True)
     membership = models.ForeignKey(Membership, related_name='payments', on_delete=models.PROTECT)
     member = models.ForeignKey(Member, related_name='payments', on_delete=models.PROTECT)
 
     def __str__(self):
-        return f"{self.member} / {self.membership.start_date}~  {self.membership.end_date}"
+        return f"{self.member} / {self.membership.start_date} ~ {self.membership.end_date}"
     
     def get_absolute_url(self):
         return reverse('workoutinfo_payment_detail_urlpattern',

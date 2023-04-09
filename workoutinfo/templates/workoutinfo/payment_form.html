@@ -1,16 +1,16 @@
 {% extends 'workoutinfo/base.html' %}
 
 {% block title %}
-    Create Workout Plan
+    Create Payment
 {% endblock %}
 
 {% block content %}
     <form
-        action="{% url 'workoutinfo_workoutplan_create_urlpattern'%}"
+        action="{% url 'workoutinfo_payment_create_urlpattern'%}"
         method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="button button-primary">
-        Create Workout Plan</button>
+        Create Payment</button>
     </form>
 {% endblock %}

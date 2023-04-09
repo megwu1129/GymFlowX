@@ -6,6 +6,11 @@
 
 {% block content %}
     <h2>Workout List</h2>
+    <div>
+      <a href="{% url 'workoutinfo_workout_create_urlpattern' %}"
+      class="button button-primary">
+        Create New Workout</a>
+    </div>
     <ul>
         {% for workout in workout_list %}
             <li>

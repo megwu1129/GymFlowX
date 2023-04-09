@@ -30,7 +30,15 @@ from workoutinfo.views import (
     WorkoutDetail,
     MembershipDetail,
     PaymentDetail,
+    MemberCreate,
+    TrainerCreate,
+    WorkoutPlanCreate,
+    WorkoutCreate,
+    NutritionPlanCreate,
+    MembershipCreate,
+    PaymentCreate,
 )
+
 
 urlpatterns = [
     path('member/',
@@ -41,6 +49,10 @@ urlpatterns = [
          MemberDetail.as_view(),
          name='workoutinfo_member_detail_urlpattern'),
 
+    path('member/create/',
+         MemberCreate.as_view(),
+         name='workoutinfo_member_create_urlpattern'),
+
     path('trainer/',
          TrainerList.as_view(),
          name='workoutinfo_trainer_list_urlpattern'),
@@ -48,6 +60,10 @@ urlpatterns = [
     path('trainer/<int:pk>/',
          TrainerDetail.as_view(),
          name='workoutinfo_trainer_detail_urlpattern'),
+
+    path('trainer/create/',
+         TrainerCreate.as_view(),
+         name='workoutinfo_trainer_create_urlpattern'),
 
     path('workoutplan/',
          WorkoutPlanList.as_view(),
@@ -57,6 +73,10 @@ urlpatterns = [
          WorkoutPlanDetail.as_view(),
          name='workoutinfo_workoutplan_detail_urlpattern'),
 
+    path('workoutplan/create/',
+         WorkoutPlanCreate.as_view(),
+         name='workoutinfo_workoutplan_create_urlpattern'),
+
     path('workout/',
          WorkoutList.as_view(),
          name='workoutinfo_workout_list_urlpattern'),
@@ -64,6 +84,10 @@ urlpatterns = [
     path('workout/<int:pk>/',
          WorkoutDetail.as_view(),
          name='workoutinfo_workout_detail_urlpattern'),
+
+    path('workout/create/',
+         WorkoutCreate.as_view(),
+         name='workoutinfo_workout_create_urlpattern'),
 
     path('nutritionplan/',
          NutritionPlanList.as_view(),
@@ -73,6 +97,10 @@ urlpatterns = [
          NutritionPlanDetail.as_view(),
          name='workoutinfo_nutritionplan_detail_urlpattern'),
 
+    path('nutritionplan/create/',
+         NutritionPlanCreate.as_view(),
+         name='workoutinfo_nutritionplan_create_urlpattern'),
+
     path('membership/',
          MembershipList.as_view(),
          name='workoutinfo_membership_list_urlpattern'),
@@ -81,6 +109,10 @@ urlpatterns = [
          MembershipDetail.as_view(),
          name='workoutinfo_membership_detail_urlpattern'),
 
+    path('membership/create/',
+         MembershipCreate.as_view(),
+         name='workoutinfo_membership_create_urlpattern'),
+
     path('payment/',
          PaymentList.as_view(),
          name='workoutinfo_payment_list_urlpattern'),
@@ -88,4 +120,8 @@ urlpatterns = [
     path('payment/<int:pk>/',
          PaymentDetail.as_view(),
          name='workoutinfo_payment_detail_urlpattern'),
+
+    path('payment/create/',
+         PaymentCreate.as_view(),
+         name='workoutinfo_payment_create_urlpattern'),
 ]

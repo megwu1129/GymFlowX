@@ -6,6 +6,11 @@
 
 {% block content %}
     <h2>Member List</h2>
+    <div>
+      <a href="{% url 'workoutinfo_member_create_urlpattern' %}"
+      class="button button-primary">
+        Create New Member</a>
+    </div>
     <ul>
         {% for member in member_list %}
             <li>

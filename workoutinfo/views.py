@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-
+from workoutinfo.utils import ObjectCreateMixin
+from workoutinfo.forms import MemberForm, TrainerForm, WorkoutPlanForm, WorkoutForm, NutritionPlanForm, MembershipForm, PaymentForm
 from workoutinfo.models import Member, Trainer, WorkoutPlan, Workout, NutritionPlan, Membership, Payment
 from django.views.generic import ListView
 
@@ -32,6 +33,11 @@ class MemberDetail(View):
         )
 
 
+class MemberCreate(ObjectCreateMixin, View):
+    form_class = MemberForm
+    template_name = 'workoutinfo/member_form.html'
+
+
 class TrainerList(View):
     def get(self, request):
         return render(
@@ -56,6 +62,11 @@ class TrainerDetail(View):
         )
 
 
+class TrainerCreate(ObjectCreateMixin, View):
+    form_class = TrainerForm
+    template_name = 'workoutinfo/trainer_form.html'
+
+
 class WorkoutPlanList(View):
     def get(self, request):
         return render(
@@ -78,6 +89,11 @@ class WorkoutPlanDetail(View):
             'workoutinfo/workoutplan_detail.html',
             {'workoutplan': workoutplan, 'workout_list': workout_list, 'member': member}
         )
+
+
+class WorkoutPlanCreate(ObjectCreateMixin, View):
+    form_class = WorkoutPlanForm
+    template_name = 'workoutinfo/workoutplan_form.html'
 
 
 class WorkoutList(View):
@@ -110,6 +126,11 @@ class WorkoutDetail(View):
         )
 
 
+class WorkoutCreate(ObjectCreateMixin, View):
+    form_class = WorkoutForm
+    template_name = 'workoutinfo/workout_form.html'
+
+
 class NutritionPlanList(View):
     def get(self, request):
         return render(
@@ -132,6 +153,11 @@ class NutritionPlanDetail(View):
             'workoutinfo/nutritionplan_detail.html',
             {'nutritionplan': nutritionplan, 'member': member, 'trainer': trainer}
         )
+
+
+class NutritionPlanCreate(ObjectCreateMixin, View):
+    form_class = NutritionPlanForm
+    template_name = 'workoutinfo/nutritionplan_form.html'
 
 
 class MembershipList(View):
@@ -158,6 +184,11 @@ class MembershipDetail(View):
         )
 
 
+class MembershipCreate(ObjectCreateMixin, View):
+    form_class = MembershipForm
+    template_name = 'workoutinfo/membership_form.html'
+
+
 class PaymentList(View):
     def get(self, request):
         return render(
@@ -179,3 +210,9 @@ class PaymentDetail(View):
             'workoutinfo/payment_detail.html',
             {'membership': membership, 'payment': payment}
         )
+
+
+class PaymentCreate(ObjectCreateMixin, View):
+    form_class = PaymentForm
+    template_name = 'workoutinfo/payment_form.html'
+

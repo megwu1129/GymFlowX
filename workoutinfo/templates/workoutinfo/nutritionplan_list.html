@@ -6,6 +6,11 @@
 
 {% block content %}
     <h2>Nutrition Plan List</h2>
+    <div>
+      <a href="{% url 'workoutinfo_nutritionplan_create_urlpattern' %}"
+      class="button button-primary">
+        Create New Nutrition Plan</a>
+    </div>
     <ul>
         {% for nutritionplan in nutritionplan_list %}
             <li>
