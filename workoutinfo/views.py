@@ -282,6 +282,27 @@ class WorkoutUpdate(View):
                 context)
 
 
+class WorkoutDelete(View):
+    def get(self, request, pk):
+        workout = self.get_object(pk)
+        return render(
+            request,
+            'workoutinfo/workout_confirm_delete.html',
+            {'workout': workout}
+        )
+
+    def get_object(self, pk):
+        workout = get_object_or_404(
+            Workout,
+            pk=pk)
+        return workout
+
+    def post(self, request, pk):
+        workout = self.get_object(pk)
+        workout.delete()
+        return redirect('workoutinfo_workout_list_urlpattern')
+
+
 class NutritionPlanList(View):
     def get(self, request):
         return render(

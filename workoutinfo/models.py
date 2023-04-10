@@ -142,6 +142,10 @@ class Workout(models.Model):
         return reverse('workoutinfo_workout_update_urlpattern',
                         kwargs={'pk': self.pk})
 
+    def get_delete_url(self):
+        return reverse('workoutinfo_workout_delete_urlpattern',
+                        kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['member', 'name', 'date']
         constraints = [
