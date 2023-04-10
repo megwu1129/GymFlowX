@@ -1,0 +1,21 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Delete Payment
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ payment.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            payment {{ payment }}?
+        </p>
+        <a href="{{ payment.get_absolute_url }}"
+            class="button button-primary">
+            Cancel</a>
+        <button type="submit" class="button button-primary">Delete Payment</button>
+    </form>
+{% endblock %}

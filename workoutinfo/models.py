@@ -241,5 +241,9 @@ class Payment(models.Model):
         return reverse('workoutinfo_payment_update_urlpattern',
                         kwargs={'pk': self.pk})
 
+    def get_delete_url(self):
+        return reverse('workoutinfo_payment_delete_urlpattern',
+                        kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['member', 'payment_date']

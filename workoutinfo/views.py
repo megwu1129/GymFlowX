@@ -522,3 +522,24 @@ class PaymentUpdate(View):
                 request,
                 self.template_name,
                 context)
+
+
+class PaymentDelete(View):
+    def get(self, request, pk):
+        payment = self.get_object(pk)
+        return render(
+            request,
+            'workoutinfo/payment_confirm_delete.html',
+            {'payment': payment}
+        )
+
+    def get_object(self, pk):
+        payment = get_object_or_404(
+            Payment,
+            pk=pk)
+        return payment
+
+    def post(self, request, pk):
+        payment = self.get_object(pk)
+        payment.delete()
+        return redirect('workoutinfo_payment_list_urlpattern')
