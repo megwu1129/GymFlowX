@@ -40,6 +40,10 @@ class Member(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
+    def get_update_url(self):
+        return reverse('workoutinfo_member_update_urlpattern',
+                        kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['last_name', 'first_name', 'disambiguator']
         constraints = [
@@ -78,6 +82,10 @@ class Trainer(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
+    def get_update_url(self):
+        return reverse('workoutinfo_trainer_update_urlpattern',
+                        kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['last_name', 'first_name', 'disambiguator']
         constraints = [
@@ -100,6 +108,10 @@ class WorkoutPlan(models.Model):
         return reverse('workoutinfo_workoutplan_detail_urlpattern',
                        kwargs={'pk': self.pk}
                        )
+
+    def get_update_url(self):
+        return reverse('workoutinfo_workoutplan_update_urlpattern',
+                        kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['member', 'name']
@@ -126,6 +138,10 @@ class Workout(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
+    # def get_update_url(self):
+    #     return reverse('workoutinfo_workout_update_urlpattern',
+    #                     kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['member', 'name', 'date']
         constraints = [
@@ -142,7 +158,6 @@ class NutritionPlan(models.Model):
     nutrition_plan_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    meal_timing = models.CharField(max_length=10, choices=TIME_CHOICES)
     member = models.ForeignKey(Member, related_name='nutritionplans', on_delete=models.PROTECT)
     trainer = models.ForeignKey(Trainer, related_name='nutritionplans', on_delete=models.PROTECT)
 
@@ -153,6 +168,10 @@ class NutritionPlan(models.Model):
         return reverse('workoutinfo_nutritionplan_detail_urlpattern',
                        kwargs={'pk': self.pk}
                        )
+
+    def get_update_url(self):
+        return reverse('workoutinfo_nutritionplan_update_urlpattern',
+                        kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['member', 'name', 'trainer']

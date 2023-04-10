@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.urls import path
 from workoutinfo.views import (
     MemberList,
@@ -37,7 +36,13 @@ from workoutinfo.views import (
     NutritionPlanCreate,
     MembershipCreate,
     PaymentCreate,
+    MemberUpdate,
+    TrainerUpdate,
+    WorkoutPlanUpdate,
+    WorkoutUpdate,
+    NutritionPlanUpdate,
 )
+
 
 
 urlpatterns = [
@@ -53,6 +58,10 @@ urlpatterns = [
          MemberCreate.as_view(),
          name='workoutinfo_member_create_urlpattern'),
 
+    path('member/<int:pk>/update/',
+         MemberUpdate.as_view(),
+         name='workoutinfo_member_update_urlpattern'),
+
     path('trainer/',
          TrainerList.as_view(),
          name='workoutinfo_trainer_list_urlpattern'),
@@ -64,6 +73,10 @@ urlpatterns = [
     path('trainer/create/',
          TrainerCreate.as_view(),
          name='workoutinfo_trainer_create_urlpattern'),
+
+    path('trainer/<int:pk>/update/',
+         TrainerUpdate.as_view(),
+         name='workoutinfo_trainer_update_urlpattern'),
 
     path('workoutplan/',
          WorkoutPlanList.as_view(),
@@ -77,6 +90,10 @@ urlpatterns = [
          WorkoutPlanCreate.as_view(),
          name='workoutinfo_workoutplan_create_urlpattern'),
 
+    path('workoutplan/<int:pk>/update/',
+         WorkoutPlanUpdate.as_view(),
+         name='workoutinfo_workoutplan_update_urlpattern'),
+
     path('workout/',
          WorkoutList.as_view(),
          name='workoutinfo_workout_list_urlpattern'),
@@ -89,6 +106,10 @@ urlpatterns = [
          WorkoutCreate.as_view(),
          name='workoutinfo_workout_create_urlpattern'),
 
+    path('workout/<int:pk>/update/',
+         WorkoutUpdate.as_view(),
+         name='workoutinfo_workout_update_urlpattern'),
+
     path('nutritionplan/',
          NutritionPlanList.as_view(),
          name='workoutinfo_nutritionplan_list_urlpattern'),
@@ -100,6 +121,10 @@ urlpatterns = [
     path('nutritionplan/create/',
          NutritionPlanCreate.as_view(),
          name='workoutinfo_nutritionplan_create_urlpattern'),
+
+    path('nutritionplan/<int:pk>/update/',
+         NutritionPlanUpdate.as_view(),
+         name='workoutinfo_nutritionplan_update_urlpattern'),
 
     path('membership/',
          MembershipList.as_view(),
@@ -125,3 +150,4 @@ urlpatterns = [
          PaymentCreate.as_view(),
          name='workoutinfo_payment_create_urlpattern'),
 ]
+

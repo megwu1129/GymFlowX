@@ -1,0 +1,15 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Update Workout Plan
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ workoutplan.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button button-primary">Update Workout Plan</button>
+    </form>
+{% endblock %}

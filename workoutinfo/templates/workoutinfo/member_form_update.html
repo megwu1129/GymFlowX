@@ -1,0 +1,15 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Update Member
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ member.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button button-primary">Update Member</button>
+    </form>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from workoutinfo.utils import ObjectCreateMixin
 from workoutinfo.forms import MemberForm, TrainerForm, WorkoutPlanForm, WorkoutForm, NutritionPlanForm, MembershipForm, PaymentForm
@@ -38,6 +38,44 @@ class MemberCreate(ObjectCreateMixin, View):
     template_name = 'workoutinfo/member_form.html'
 
 
+class MemberUpdate(View):
+    form_class = MemberForm
+    model = Member
+    template_name = 'workoutinfo/member_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        member = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=member),
+            'member': member,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        member = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=member)
+        if bound_form.is_valid():
+            new_member = bound_form.save()
+            return redirect(new_member)
+        else:
+            context = {
+                'form': bound_form,
+                'member': member,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
+
 class TrainerList(View):
     def get(self, request):
         return render(
@@ -67,6 +105,44 @@ class TrainerCreate(ObjectCreateMixin, View):
     template_name = 'workoutinfo/trainer_form.html'
 
 
+class TrainerUpdate(View):
+    form_class = TrainerForm
+    model = Trainer
+    template_name = 'workoutinfo/trainer_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        trainer = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=trainer),
+            'trainer': trainer,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        trainer = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=trainer)
+        if bound_form.is_valid():
+            new_trainer = bound_form.save()
+            return redirect(new_trainer)
+        else:
+            context = {
+                'form': bound_form,
+                'trainer': trainer,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
+
 class WorkoutPlanList(View):
     def get(self, request):
         return render(
@@ -94,6 +170,44 @@ class WorkoutPlanDetail(View):
 class WorkoutPlanCreate(ObjectCreateMixin, View):
     form_class = WorkoutPlanForm
     template_name = 'workoutinfo/workoutplan_form.html'
+
+
+class WorkoutPlanUpdate(View):
+    form_class = WorkoutPlanForm
+    model = WorkoutPlan
+    template_name = 'workoutinfo/workoutplan_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        workoutplan = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=workoutplan),
+            'workoutplan': workoutplan,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        workoutplan = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=workoutplan)
+        if bound_form.is_valid():
+            new_workoutplan = bound_form.save()
+            return redirect(new_workoutplan)
+        else:
+            context = {
+                'form': bound_form,
+                'workoutplan': workoutplan,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
 
 
 class WorkoutList(View):
@@ -131,6 +245,44 @@ class WorkoutCreate(ObjectCreateMixin, View):
     template_name = 'workoutinfo/workout_form.html'
 
 
+class WorkoutUpdate(View):
+    form_class = WorkoutForm
+    model = Workout
+    template_name = 'workoutinfo/workout_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        workout = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=workout),
+            'workout': workout,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        workout = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=workout)
+        if bound_form.is_valid():
+            new_workout = bound_form.save()
+            return redirect(new_workout)
+        else:
+            context = {
+                'form': bound_form,
+                'workout': workout,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
+
 class NutritionPlanList(View):
     def get(self, request):
         return render(
@@ -158,6 +310,44 @@ class NutritionPlanDetail(View):
 class NutritionPlanCreate(ObjectCreateMixin, View):
     form_class = NutritionPlanForm
     template_name = 'workoutinfo/nutritionplan_form.html'
+
+
+class NutritionPlanUpdate(View):
+    form_class = NutritionPlanForm
+    model = NutritionPlan
+    template_name = 'workoutinfo/nutritionplan_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        nutritionplan = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=nutritionplan),
+            'nutritionplan': nutritionplan,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        nutritionplan = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=nutritionplan)
+        if bound_form.is_valid():
+            new_nutritionplan = bound_form.save()
+            return redirect(new_nutritionplan)
+        else:
+            context = {
+                'form': bound_form,
+                'nutritionplan': nutritionplan,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
 
 
 class MembershipList(View):
