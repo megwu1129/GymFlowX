@@ -194,6 +194,10 @@ class Membership(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
+    def get_update_url(self):
+        return reverse('workoutinfo_membership_update_urlpattern',
+                        kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['member', 'start_date', 'end_date']
         constraints = [
@@ -224,6 +228,10 @@ class Payment(models.Model):
         return reverse('workoutinfo_payment_detail_urlpattern',
                        kwargs={'pk': self.pk}
                        )
+
+    def get_update_url(self):
+        return reverse('workoutinfo_payment_update_urlpattern',
+                        kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['member', 'payment_date']

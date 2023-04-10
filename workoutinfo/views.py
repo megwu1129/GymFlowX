@@ -379,6 +379,44 @@ class MembershipCreate(ObjectCreateMixin, View):
     template_name = 'workoutinfo/membership_form.html'
 
 
+class MembershipUpdate(View):
+    form_class = MembershipForm
+    model = Membership
+    template_name = 'workoutinfo/membership_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        membership = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=membership),
+            'membership': membership,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        membership = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=membership)
+        if bound_form.is_valid():
+            new_membership = bound_form.save()
+            return redirect(new_membership)
+        else:
+            context = {
+                'form': bound_form,
+                'membership': membership,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
+
+
 class PaymentList(View):
     def get(self, request):
         return render(
@@ -406,3 +444,40 @@ class PaymentCreate(ObjectCreateMixin, View):
     form_class = PaymentForm
     template_name = 'workoutinfo/payment_form.html'
 
+
+class PaymentUpdate(View):
+    form_class = PaymentForm
+    model = Payment
+    template_name = 'workoutinfo/payment_form_update.html'
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            self.model,
+            pk=pk)
+
+    def get(self, request, pk):
+        payment = self.get_object(pk)
+        context = {
+            'form': self.form_class(
+                instance=payment),
+            'payment': payment,
+        }
+        return render(
+            request, self.template_name, context)
+
+    def post(self, request, pk):
+        payment = self.get_object(pk)
+        bound_form = self.form_class(
+            request.POST, instance=payment)
+        if bound_form.is_valid():
+            new_payment = bound_form.save()
+            return redirect(new_payment)
+        else:
+            context = {
+                'form': bound_form,
+                'payment': payment,
+            }
+            return render(
+                request,
+                self.template_name,
+                context)
