@@ -138,9 +138,9 @@ class Workout(models.Model):
                        kwargs={'pk': self.pk}
                        )
 
-    # def get_update_url(self):
-    #     return reverse('workoutinfo_workout_update_urlpattern',
-    #                     kwargs={'pk': self.pk})
+    def get_update_url(self):
+        return reverse('workoutinfo_workout_update_urlpattern',
+                        kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ['member', 'name', 'date']

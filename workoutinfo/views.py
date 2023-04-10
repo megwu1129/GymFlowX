@@ -227,7 +227,6 @@ class WorkoutDetail(View):
         )
         member = workout.member
         trainer = workout.trainer
-        workoutplan = workout.workout_plan
         date = workout.date
         duration = workout.duration
         name = workout.name
@@ -235,7 +234,7 @@ class WorkoutDetail(View):
         return render(
             request,
             'workoutinfo/workout_detail.html',
-            {'workoutplan': workoutplan, 'trainer': trainer, 'member': member, 'date': date, 'duration': duration,
+            {'workout': workout, 'trainer': trainer, 'member': member, 'date': date, 'duration': duration,
              'name': name,  'description': description}
         )
 
