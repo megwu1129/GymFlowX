@@ -177,6 +177,10 @@ class NutritionPlan(models.Model):
         return reverse('workoutinfo_nutritionplan_update_urlpattern',
                         kwargs={'pk': self.pk})
 
+    def get_delete_url(self):
+        return reverse('workoutinfo_nutritionplan_delete_urlpattern',
+                        kwargs={'pk': self.pk})
+
     class Meta:
         ordering = ['member', 'name', 'trainer']
         constraints = [

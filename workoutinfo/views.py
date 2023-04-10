@@ -370,6 +370,27 @@ class NutritionPlanUpdate(View):
                 context)
 
 
+class NutritionPlanDelete(View):
+    def get(self, request, pk):
+        nutritionplan = self.get_object(pk)
+        return render(
+            request,
+            'workoutinfo/nutritionplan_confirm_delete.html',
+            {'nutritionplan': nutritionplan}
+        )
+
+    def get_object(self, pk):
+        nutritionplan = get_object_or_404(
+            NutritionPlan,
+            pk=pk)
+        return nutritionplan
+
+    def post(self, request, pk):
+        nutritionplan = self.get_object(pk)
+        nutritionplan.delete()
+        return redirect('workoutinfo_nutritionplan_list_urlpattern')
+
+
 class MembershipList(View):
     def get(self, request):
         return render(
