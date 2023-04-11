@@ -278,6 +278,36 @@ class WorkoutPlanUpdate(View):
                 context)
 
 
+class WorkoutPlanDelete(View):
+    def get(self, request, pk):
+        workoutplan = self.get_object(pk)
+        workout = workoutplan.workouts.all()
+        if workout.count() > 0:
+            return render(
+                request,
+                'workoutinfo/workoutplan_refuse_delete.html',
+                {'workoutplan': workoutplan,
+                 'workout': workout,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'workoutinfo/workoutplan_confirm_delete.html',
+                {'workoutplan': workoutplan}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            WorkoutPlan,
+            pk=pk)
+
+    def post(self, request, pk):
+        workoutplan = self.get_object(pk)
+        workoutplan.delete()
+        return redirect('workoutinfo_workoutplan_list_urlpattern')
+
+
 class WorkoutList(View):
     def get(self, request):
         return render(
@@ -524,6 +554,37 @@ class MembershipUpdate(View):
                 request,
                 self.template_name,
                 context)
+
+
+class MembershipDelete(View):
+    def get(self, request, pk):
+        membership = self.get_object(pk)
+        payment = membership.payments.all()
+        if payment.count() > 0:
+            return render(
+                request,
+                'workoutinfo/membership_refuse_delete.html',
+                {'membership': membership,
+                 'payment': payment,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'workoutinfo/membership_confirm_delete.html',
+                {'membership': membership}
+            )
+
+    def get_object(self, pk):
+        membership = get_object_or_404(
+            Membership,
+            pk=pk)
+        return membership
+
+    def post(self, request, pk):
+        membership = self.get_object(pk)
+        membership.delete()
+        return redirect('workoutinfo_membership_list_urlpattern')
 
 
 class PaymentList(View):

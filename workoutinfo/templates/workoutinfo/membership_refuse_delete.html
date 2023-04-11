@@ -1,0 +1,25 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Membership
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Membership</h2>
+        <p>
+            You may not delete membership {{ membership }}.  This
+            membership is currently associated with below payment:
+        </p>
+
+        <ul>
+            {% for payment in payment %}
+            <li><a href="{{ payment.get_absolute_url }}">{{ payment }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'workoutinfo_member_list_urlpattern' %}">Member List</a>.
+        </p>
+    </div>
+{% endblock %}

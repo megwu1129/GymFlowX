@@ -1,0 +1,21 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Delete Workout Plan
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{{ workoutplan.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+            workoutplan {{ workoutplan }}?
+        </p>
+        <a href="{{ workoutplan.get_absolute_url }}"
+            class="button button-primary">
+            Cancel</a>
+        <button type="submit" class="button button-primary">Delete Workout Plan</button>
+    </form>
+{% endblock %}
