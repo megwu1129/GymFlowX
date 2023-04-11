@@ -1,0 +1,31 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Trainer
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Trainer</h2>
+        <p>
+            You may not delete trainer {{ trainer }}.  This
+            trainer is currently associated with below information:
+        </p>
+
+        <ul>
+            {% for workout in workout %}
+            <li><a href="{{ workout.get_absolute_url }}">{{ workout }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <ul>
+            {% for nutritionplan in nutritionplan %}
+            <li><a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'workoutinfo_trainer_list_urlpattern' %}">Member List</a>.
+        </p>
+    </div>
+{% endblock %}

@@ -76,6 +76,42 @@ class MemberUpdate(View):
                 context)
 
 
+class MemberDelete(View):
+    def get(self, request, pk):
+        member = self.get_object(pk)
+        nutritionplan = member.nutritionplans.all()
+        workoutplan = member.workoutplans.all()
+        workout = member.workouts.all()
+        membership = member.memberships.all()
+        if nutritionplan.count() > 0 or workoutplan.count() > 0 or workout.count() > 0 or membership.count() > 0:
+            return render(
+                request,
+                'workoutinfo/member_refuse_delete.html',
+                {'member': member,
+                 'nutritionplan': nutritionplan,
+                 'workoutplan': workoutplan,
+                 'workout': workout,
+                 'membership': membership,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'workoutinfo/member_confirm_delete.html',
+                {'member': member}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            Member,
+            pk=pk)
+
+    def post(self, request, pk):
+        member = self.get_object(pk)
+        member.delete()
+        return redirect('workoutinfo_member_list_urlpattern')
+
+
 class TrainerList(View):
     def get(self, request):
         return render(
@@ -141,6 +177,38 @@ class TrainerUpdate(View):
                 request,
                 self.template_name,
                 context)
+
+
+class TrainerDelete(View):
+    def get(self, request, pk):
+        trainer = self.get_object(pk)
+        nutritionplan = trainer.nutritionplans.all()
+        workout = trainer.workouts.all()
+        if nutritionplan.count() > 0 or workout.count() > 0:
+            return render(
+                request,
+                'workoutinfo/member_refuse_delete.html',
+                {'trainer': trainer,
+                 'nutritionplan': nutritionplan,
+                 'workout': workout,
+                 }
+            )
+        else:
+            return render(
+                request,
+                'workoutinfo/trainer_confirm_delete.html',
+                {'trainer': trainer}
+            )
+
+    def get_object(self, pk):
+        return get_object_or_404(
+            Trainer,
+            pk=pk)
+
+    def post(self, request, pk):
+        trainer = self.get_object(pk)
+        trainer.delete()
+        return redirect('workoutinfo_trainer_list_urlpattern')
 
 
 class WorkoutPlanList(View):

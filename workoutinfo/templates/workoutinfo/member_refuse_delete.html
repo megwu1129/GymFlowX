@@ -1,0 +1,43 @@
+{% extends 'workoutinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Member
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Member</h2>
+        <p>
+            You may not delete member {{ member }}.  This
+            member is currently associated with below information:
+        </p>
+
+        <ul>
+            {% for workoutplan in workoutplan %}
+            <li><a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <ul>
+            {% for workout in workout %}
+            <li><a href="{{ workout.get_absolute_url }}">{{ workout }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <ul>
+            {% for membership in membership %}
+            <li><a href="{{ membership.get_absolute_url }}">{{ membership }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <ul>
+            {% for nutritionplan in nutritionplan %}
+            <li><a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'workoutinfo_member_list_urlpattern' %}">Member List</a>.
+        </p>
+    </div>
+{% endblock %}

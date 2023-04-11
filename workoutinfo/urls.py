@@ -46,6 +46,8 @@ from workoutinfo.views import (
     WorkoutDelete,
     NutritionPlanDelete,
     PaymentDelete,
+    MemberDelete,
+    TrainerDelete,
 )
 
 
@@ -66,6 +68,10 @@ urlpatterns = [
          MemberUpdate.as_view(),
          name='workoutinfo_member_update_urlpattern'),
 
+    path('member/<int:pk>/delete/',
+         MemberDelete.as_view(),
+         name='workoutinfo_member_delete_urlpattern'),
+
     path('trainer/',
          TrainerList.as_view(),
          name='workoutinfo_trainer_list_urlpattern'),
@@ -81,6 +87,10 @@ urlpatterns = [
     path('trainer/<int:pk>/update/',
          TrainerUpdate.as_view(),
          name='workoutinfo_trainer_update_urlpattern'),
+
+    path('trainer/<int:pk>/delete/',
+         TrainerDelete.as_view(),
+         name='workoutinfo_trainer_delete_urlpattern'),
 
     path('workoutplan/',
          WorkoutPlanList.as_view(),
