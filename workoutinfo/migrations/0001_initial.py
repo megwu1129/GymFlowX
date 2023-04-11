@@ -268,7 +268,7 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AddConstraint(
-            model_name="workout",
+            model_name="workoutinfo",
             constraint=models.UniqueConstraint(
                 fields=("member", "name"), name="unique_workout"
             ),

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name="unique_payment",
         ),
         migrations.AlterField(
-            model_name="workout",
+            model_name="workoutinfo",
             name="date",
             field=models.DateField(),
         ),
