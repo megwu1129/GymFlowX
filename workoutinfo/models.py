@@ -207,7 +207,7 @@ class Membership(models.Model):
     member = models.ForeignKey(Member, related_name='memberships', on_delete=models.PROTECT)
 
     def __str__(self):
-        return f"{self.member} / {self.start_date} ~ {self.end_date}"
+        return f"{self.member} ({self.start_date} ~ {self.end_date})"
 
     def get_absolute_url(self):
         return reverse('workoutinfo_membership_detail_urlpattern',
