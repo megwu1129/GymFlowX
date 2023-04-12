@@ -202,13 +202,8 @@ class TrainerDelete(View):
         return redirect('workoutinfo_trainer_list_urlpattern')
 
 
-class WorkoutPlanList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/workoutplan_list.html',
-            {'workoutplan_list': WorkoutPlan.objects.all()}
-        )
+class WorkoutPlanList(ListView):
+    model = WorkoutPlan
 
 
 class WorkoutPlanDetail(View):
