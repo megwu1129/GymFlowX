@@ -382,19 +382,17 @@ class NutritionPlanList(ListView):
     model = NutritionPlan
 
 
-class NutritionPlanDetail(View):
-    def get(self, request, pk):
-        nutritionplan = get_object_or_404(
-            NutritionPlan,
-            pk=pk
-        )
+class NutritionPlanDetail(DetailView):
+    model = NutritionPlan
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        nutritionplan = self.get_object()
         member = nutritionplan.member
         trainer = nutritionplan.trainer
-        return render(
-            request,
-            'workoutinfo/nutritionplan_detail.html',
-            {'nutritionplan': nutritionplan, 'member': member, 'trainer': trainer}
-        )
+        context['member'] = member
+        context['trainer'] = trainer
+        return context
 
 
 class NutritionPlanCreate(ObjectCreateMixin, View):
@@ -465,19 +463,30 @@ class MembershipList(ListView):
     model = Membership
 
 
-class MembershipDetail(View):
-    def get(self, request, pk):
-        membership = get_object_or_404(
-            Membership,
-            pk=pk
-        )
+# class MembershipDetail(View):
+#     def get(self, request, pk):
+#         membership = get_object_or_404(
+#             Membership,
+#             pk=pk
+#         )
+#         member = membership.member
+#         payment_list = membership.payments.all()
+#         return render(
+#             request,
+#             'workoutinfo/membership_detail.html',
+#             {'membership': membership, 'member': member, 'payment_list': payment_list}
+#         )
+class MembershipDetail(DetailView):
+    model = Membership
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        membership = self.get_object()
         member = membership.member
         payment_list = membership.payments.all()
-        return render(
-            request,
-            'workoutinfo/membership_detail.html',
-            {'membership': membership, 'member': member, 'payment_list': payment_list}
-        )
+        context['member'] = member
+        context['payment_list'] = payment_list
+        return context
 
 
 class MembershipCreate(ObjectCreateMixin, View):
