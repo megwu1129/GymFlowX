@@ -15,8 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
-
+from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
     path('',
@@ -24,6 +23,12 @@ urlpatterns = [
              pattern_name = 'workoutinfo_workout_list_urlpattern',
              permanent=False
          )),
+
+    path('about/',
+         TemplateView.as_view(
+            template_name='workoutinfo/about.html'),
+            name='about_urlpattern'
+         ),
 
     path('admin/', admin.site.urls),
     path('', include('workoutinfo.urls'))
