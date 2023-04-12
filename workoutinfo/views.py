@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from workoutinfo.utils import ObjectCreateMixin
 from workoutinfo.forms import MemberForm, TrainerForm, WorkoutPlanForm, WorkoutForm, NutritionPlanForm, MembershipForm, PaymentForm
 from workoutinfo.models import Member, Trainer, WorkoutPlan, Workout, NutritionPlan, Membership, Payment
@@ -27,9 +27,9 @@ class MemberDetail(DetailView):
         return context
 
 
-class MemberCreate(ObjectCreateMixin, View):
+class MemberCreate(CreateView):
     form_class = MemberForm
-    template_name = 'workoutinfo/member_form.html'
+    model = Member
 
 
 class MemberUpdate(View):
@@ -122,9 +122,9 @@ class TrainerDetail(DetailView):
         return context
 
 
-class TrainerCreate(ObjectCreateMixin, View):
+class TrainerCreate(CreateView):
     form_class = TrainerForm
-    template_name = 'workoutinfo/trainer_form.html'
+    model = Trainer
 
 
 class TrainerUpdate(View):
