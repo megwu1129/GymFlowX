@@ -1,18 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
+from django.views.generic import ListView
 from workoutinfo.utils import ObjectCreateMixin
 from workoutinfo.forms import MemberForm, TrainerForm, WorkoutPlanForm, WorkoutForm, NutritionPlanForm, MembershipForm, PaymentForm
 from workoutinfo.models import Member, Trainer, WorkoutPlan, Workout, NutritionPlan, Membership, Payment
 from django.views.generic import ListView
 
 
-class MemberList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/member_list.html',
-            {'member_list': Member.objects.all()}
-        )
+class MemberList(ListView):
+    model = Member
 
 
 class MemberDetail(View):
@@ -112,13 +108,8 @@ class MemberDelete(View):
         return redirect('workoutinfo_member_list_urlpattern')
 
 
-class TrainerList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/trainer_list.html',
-            {'trainer_list': Trainer.objects.all()}
-        )
+class TrainerList(ListView):
+    model = Trainer
 
 
 class TrainerDetail(View):
