@@ -121,6 +121,7 @@ class TrainerDetail(DetailView):
         context['nutritionplan_list'] = nutritionplan_list
         return context
 
+
 class TrainerCreate(ObjectCreateMixin, View):
     form_class = TrainerForm
     template_name = 'workoutinfo/trainer_form.html'
@@ -200,19 +201,17 @@ class WorkoutPlanList(ListView):
     model = WorkoutPlan
 
 
-class WorkoutPlanDetail(View):
-    def get(self, request, pk):
-        workoutplan = get_object_or_404(
-            WorkoutPlan,
-            pk=pk
-        )
+class WorkoutPlanDetail(DetailView):
+    model = WorkoutPlan
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        workoutplan = self.get_object()
         member = workoutplan.member
         workout_list = workoutplan.workouts.all()
-        return render(
-            request,
-            'workoutinfo/workoutplan_detail.html',
-            {'workoutplan': workoutplan, 'workout_list': workout_list, 'member': member}
-        )
+        context['workout_list'] = workout_list
+        context['member'] = member
+        return context
 
 
 class WorkoutPlanCreate(ObjectCreateMixin, View):
@@ -292,12 +291,12 @@ class WorkoutList(ListView):
     model = Workout
 
 
-class WorkoutDetail(View):
-    def get(self, request, pk):
-        workout = get_object_or_404(
-            Workout,
-            pk=pk
-        )
+class WorkoutDetail(DetailView):
+    model = Workout
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        workout = self.get_object()
         member = workout.member
         trainer = workout.trainer
         workoutplan = workout.workout_plan
@@ -305,12 +304,14 @@ class WorkoutDetail(View):
         duration = workout.duration
         name = workout.name
         description = workout.description
-        return render(
-            request,
-            'workoutinfo/workout_detail.html',
-            {'workout': workout, 'trainer': trainer, 'member': member, 'date': date, 'duration': duration,
-             'name': name,  'description': description, 'workoutplan': workoutplan}
-        )
+        context['member'] = member
+        context['trainer'] = trainer
+        context['workoutplan'] = workoutplan
+        context['date'] = date
+        context['duration'] = duration
+        context['name'] = name
+        context['description'] = description
+        return context
 
 
 class WorkoutCreate(ObjectCreateMixin, View):
