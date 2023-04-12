@@ -294,13 +294,8 @@ class WorkoutPlanDelete(View):
         return redirect('workoutinfo_workoutplan_list_urlpattern')
 
 
-class WorkoutList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/workout_list.html',
-            {'workout_list': Workout.objects.all()}
-        )
+class WorkoutList(ListView):
+    model = Workout
 
 
 class WorkoutDetail(View):
@@ -388,13 +383,8 @@ class WorkoutDelete(View):
         return redirect('workoutinfo_workout_list_urlpattern')
 
 
-class NutritionPlanList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/nutritionplan_list.html',
-            {'nutritionplan_list': NutritionPlan.objects.all()}
-        )
+class NutritionPlanList(ListView):
+    model = NutritionPlan
 
 
 class NutritionPlanDetail(View):
