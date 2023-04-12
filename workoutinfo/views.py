@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from workoutinfo.utils import ObjectCreateMixin
 from workoutinfo.forms import MemberForm, TrainerForm, WorkoutPlanForm, WorkoutForm, NutritionPlanForm, MembershipForm, PaymentForm
 from workoutinfo.models import Member, Trainer, WorkoutPlan, Workout, NutritionPlan, Membership, Payment
@@ -11,22 +11,20 @@ class MemberList(ListView):
     model = Member
 
 
-class MemberDetail(View):
-    def get(self, request, pk):
-        member = get_object_or_404(
-            Member,
-            pk=pk
-        )
+class MemberDetail(DetailView):
+    model = Member
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        member = self.get_object()
         membership_list = member.memberships.all()
         workoutplan_list = member.workoutplans.all()
         workout_list = member.workouts.all()
         nutritionplan_list = member.nutritionplans.all()
-        return render(
-            request,
-            'workoutinfo/member_detail.html',
-            {'member': member, 'workoutplan_list': workoutplan_list, 'membership_list': membership_list,
-             'workout_list': workout_list, 'nutritionplan_list': nutritionplan_list}
-        )
+        context['membership_list'] = membership_list
+        context['workoutplan_list'] = workoutplan_list
+        context['workout_list'] = workout_list
+        context['nutritionplan_list'] = nutritionplan_list
+        return context
 
 
 class MemberCreate(ObjectCreateMixin, View):
@@ -112,20 +110,16 @@ class TrainerList(ListView):
     model = Trainer
 
 
-class TrainerDetail(View):
-    def get(self, request, pk):
-        trainer = get_object_or_404(
-            Trainer,
-            pk=pk
-        )
-        nutritionplan_list = trainer.nutritionplans.all()
+class TrainerDetail(DetailView):
+    model = Trainer
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        trainer = self.get_object()
         workout_list = trainer.workouts.all()
-        return render(
-            request,
-            'workoutinfo/trainer_detail.html',
-            {'trainer': trainer, 'workout_list': workout_list, 'nutritionplan_list': nutritionplan_list}
-        )
-
+        nutritionplan_list = trainer.nutritionplans.all()
+        context['workout_list'] = workout_list
+        context['nutritionplan_list'] = nutritionplan_list
+        return context
 
 class TrainerCreate(ObjectCreateMixin, View):
     form_class = TrainerForm
