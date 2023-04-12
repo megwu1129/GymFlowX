@@ -463,19 +463,6 @@ class MembershipList(ListView):
     model = Membership
 
 
-# class MembershipDetail(View):
-#     def get(self, request, pk):
-#         membership = get_object_or_404(
-#             Membership,
-#             pk=pk
-#         )
-#         member = membership.member
-#         payment_list = membership.payments.all()
-#         return render(
-#             request,
-#             'workoutinfo/membership_detail.html',
-#             {'membership': membership, 'member': member, 'payment_list': payment_list}
-#         )
 class MembershipDetail(DetailView):
     model = Membership
 
@@ -567,18 +554,15 @@ class PaymentList(ListView):
     model = Payment
 
 
-class PaymentDetail(View):
-    def get(self, request, pk):
-        payment = get_object_or_404(
-            Payment,
-            pk=pk
-        )
+class PaymentDetail(DetailView):
+    model = Payment
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        payment = self.get_object()
         membership = payment.membership
-        return render(
-            request,
-            'workoutinfo/payment_detail.html',
-            {'membership': membership, 'payment': payment}
-        )
+        context['membership'] = membership
+        return context
 
 
 class PaymentCreate(ObjectCreateMixin, View):
