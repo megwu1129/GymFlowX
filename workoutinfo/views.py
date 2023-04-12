@@ -214,9 +214,9 @@ class WorkoutPlanDetail(DetailView):
         return context
 
 
-class WorkoutPlanCreate(ObjectCreateMixin, View):
+class WorkoutPlanCreate(CreateView):
     form_class = WorkoutPlanForm
-    template_name = 'workoutinfo/workoutplan_form.html'
+    model = WorkoutPlan
 
 
 class WorkoutPlanUpdate(View):
@@ -314,9 +314,9 @@ class WorkoutDetail(DetailView):
         return context
 
 
-class WorkoutCreate(ObjectCreateMixin, View):
+class WorkoutCreate(CreateView):
     form_class = WorkoutForm
-    template_name = 'workoutinfo/workout_form.html'
+    model = Workout
 
 
 class WorkoutUpdate(View):
@@ -395,9 +395,9 @@ class NutritionPlanDetail(DetailView):
         return context
 
 
-class NutritionPlanCreate(ObjectCreateMixin, View):
+class NutritionPlanCreate(CreateView):
     form_class = NutritionPlanForm
-    template_name = 'workoutinfo/nutritionplan_form.html'
+    model = NutritionPlan
 
 
 class NutritionPlanUpdate(View):
@@ -476,9 +476,9 @@ class MembershipDetail(DetailView):
         return context
 
 
-class MembershipCreate(ObjectCreateMixin, View):
+class MembershipCreate(CreateView):
     form_class = MembershipForm
-    template_name = 'workoutinfo/membership_form.html'
+    model = Membership
 
 
 class MembershipUpdate(View):
@@ -565,9 +565,9 @@ class PaymentDetail(DetailView):
         return context
 
 
-class PaymentCreate(ObjectCreateMixin, View):
+class PaymentCreate(CreateView):
     form_class = PaymentForm
-    template_name = 'workoutinfo/payment_form.html'
+    model = Payment
 
 
 class PaymentUpdate(View):
