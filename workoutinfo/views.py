@@ -466,13 +466,8 @@ class NutritionPlanDelete(View):
         return redirect('workoutinfo_nutritionplan_list_urlpattern')
 
 
-class MembershipList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/membership_list.html',
-            {'membership_list': Membership.objects.all()}
-        )
+class MembershipList(ListView):
+    model = Membership
 
 
 class MembershipDetail(View):
@@ -564,13 +559,8 @@ class MembershipDelete(View):
         return redirect('workoutinfo_membership_list_urlpattern')
 
 
-class PaymentList(View):
-    def get(self, request):
-        return render(
-            request,
-            'workoutinfo/payment_list.html',
-            {'payment_list': Payment.objects.all()}
-        )
+class PaymentList(ListView):
+    model = Payment
 
 
 class PaymentDetail(View):
