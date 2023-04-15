@@ -21,11 +21,11 @@ from django.views.generic import RedirectView, TemplateView
 urlpatterns = [
     path('',
          RedirectView.as_view(
-             pattern_name = 'workoutinfo_workout_list_urlpattern',
+             pattern_name = 'about_urlpattern',
              permanent=False
          )),
     path('login/',
-         LoginView.as_view(template_name='courseinfo/login.html'),
+         LoginView.as_view(template_name='workoutinfo/login.html'),
          name='login_urlpattern'
          ),
     path('about/',
