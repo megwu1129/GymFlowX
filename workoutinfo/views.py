@@ -1,16 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from workoutinfo.forms import MemberForm, TrainerForm, WorkoutPlanForm, WorkoutForm, NutritionPlanForm, MembershipForm, PaymentForm
 from workoutinfo.models import Member, Trainer, WorkoutPlan, Workout, NutritionPlan, Membership, Payment
 from django.views.generic import ListView
 
 
-class MemberList(ListView):
+class MemberList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Member
 
 
-class MemberDetail(DetailView):
+class MemberDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Member
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
@@ -26,12 +27,12 @@ class MemberDetail(DetailView):
         return context
 
 
-class MemberCreate(CreateView):
+class MemberCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = MemberForm
     model = Member
 
 
-class MemberUpdate(View):
+class MemberUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = MemberForm
     model = Member
     template_name = 'workoutinfo/member_form_update.html'
@@ -69,7 +70,7 @@ class MemberUpdate(View):
                 context)
 
 
-class MemberDelete(View):
+class MemberDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         member = self.get_object(pk)
         nutritionplan = member.nutritionplans.all()
@@ -105,11 +106,11 @@ class MemberDelete(View):
         return redirect('workoutinfo_member_list_urlpattern')
 
 
-class TrainerList(ListView):
+class TrainerList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Trainer
 
 
-class TrainerDetail(DetailView):
+class TrainerDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Trainer
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
@@ -121,12 +122,12 @@ class TrainerDetail(DetailView):
         return context
 
 
-class TrainerCreate(CreateView):
+class TrainerCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = TrainerForm
     model = Trainer
 
 
-class TrainerUpdate(View):
+class TrainerUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = TrainerForm
     model = Trainer
     template_name = 'workoutinfo/trainer_form_update.html'
@@ -164,7 +165,7 @@ class TrainerUpdate(View):
                 context)
 
 
-class TrainerDelete(View):
+class TrainerDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         trainer = self.get_object(pk)
         nutritionplan = trainer.nutritionplans.all()
@@ -196,11 +197,11 @@ class TrainerDelete(View):
         return redirect('workoutinfo_trainer_list_urlpattern')
 
 
-class WorkoutPlanList(ListView):
+class WorkoutPlanList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = WorkoutPlan
 
 
-class WorkoutPlanDetail(DetailView):
+class WorkoutPlanDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = WorkoutPlan
 
     def get_context_data(self, **kwargs):
@@ -213,12 +214,12 @@ class WorkoutPlanDetail(DetailView):
         return context
 
 
-class WorkoutPlanCreate(CreateView):
+class WorkoutPlanCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = WorkoutPlanForm
     model = WorkoutPlan
 
 
-class WorkoutPlanUpdate(View):
+class WorkoutPlanUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = WorkoutPlanForm
     model = WorkoutPlan
     template_name = 'workoutinfo/workoutplan_form_update.html'
@@ -256,7 +257,7 @@ class WorkoutPlanUpdate(View):
                 context)
 
 
-class WorkoutPlanDelete(View):
+class WorkoutPlanDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         workoutplan = self.get_object(pk)
         workout = workoutplan.workouts.all()
@@ -286,11 +287,11 @@ class WorkoutPlanDelete(View):
         return redirect('workoutinfo_workoutplan_list_urlpattern')
 
 
-class WorkoutList(ListView):
+class WorkoutList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Workout
 
 
-class WorkoutDetail(DetailView):
+class WorkoutDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Workout
 
     def get_context_data(self, **kwargs):
@@ -313,12 +314,12 @@ class WorkoutDetail(DetailView):
         return context
 
 
-class WorkoutCreate(CreateView):
+class WorkoutCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = WorkoutForm
     model = Workout
 
 
-class WorkoutUpdate(View):
+class WorkoutUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = WorkoutForm
     model = Workout
     template_name = 'workoutinfo/workout_form_update.html'
@@ -356,7 +357,7 @@ class WorkoutUpdate(View):
                 context)
 
 
-class WorkoutDelete(View):
+class WorkoutDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         workout = self.get_object(pk)
         return render(
@@ -377,11 +378,11 @@ class WorkoutDelete(View):
         return redirect('workoutinfo_workout_list_urlpattern')
 
 
-class NutritionPlanList(ListView):
+class NutritionPlanList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = NutritionPlan
 
 
-class NutritionPlanDetail(DetailView):
+class NutritionPlanDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = NutritionPlan
 
     def get_context_data(self, **kwargs):
@@ -394,12 +395,12 @@ class NutritionPlanDetail(DetailView):
         return context
 
 
-class NutritionPlanCreate(CreateView):
+class NutritionPlanCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = NutritionPlanForm
     model = NutritionPlan
 
 
-class NutritionPlanUpdate(View):
+class NutritionPlanUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = NutritionPlanForm
     model = NutritionPlan
     template_name = 'workoutinfo/nutritionplan_form_update.html'
@@ -437,7 +438,7 @@ class NutritionPlanUpdate(View):
                 context)
 
 
-class NutritionPlanDelete(View):
+class NutritionPlanDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         nutritionplan = self.get_object(pk)
         return render(
@@ -458,11 +459,11 @@ class NutritionPlanDelete(View):
         return redirect('workoutinfo_nutritionplan_list_urlpattern')
 
 
-class MembershipList(ListView):
+class MembershipList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Membership
 
 
-class MembershipDetail(DetailView):
+class MembershipDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Membership
 
     def get_context_data(self, **kwargs):
@@ -475,12 +476,12 @@ class MembershipDetail(DetailView):
         return context
 
 
-class MembershipCreate(CreateView):
+class MembershipCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = MembershipForm
     model = Membership
 
 
-class MembershipUpdate(View):
+class MembershipUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = MembershipForm
     model = Membership
     template_name = 'workoutinfo/membership_form_update.html'
@@ -518,7 +519,7 @@ class MembershipUpdate(View):
                 context)
 
 
-class MembershipDelete(View):
+class MembershipDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         membership = self.get_object(pk)
         payment = membership.payments.all()
@@ -549,11 +550,11 @@ class MembershipDelete(View):
         return redirect('workoutinfo_membership_list_urlpattern')
 
 
-class PaymentList(ListView):
+class PaymentList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Payment
 
 
-class PaymentDetail(DetailView):
+class PaymentDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     model = Payment
 
     def get_context_data(self, **kwargs):
@@ -564,12 +565,12 @@ class PaymentDetail(DetailView):
         return context
 
 
-class PaymentCreate(CreateView):
+class PaymentCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = PaymentForm
     model = Payment
 
 
-class PaymentUpdate(View):
+class PaymentUpdate(LoginRequiredMixin, PermissionRequiredMixin, View):
     form_class = PaymentForm
     model = Payment
     template_name = 'workoutinfo/payment_form_update.html'
@@ -607,7 +608,7 @@ class PaymentUpdate(View):
                 context)
 
 
-class PaymentDelete(View):
+class PaymentDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, pk):
         payment = self.get_object(pk)
         return render(
