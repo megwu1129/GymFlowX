@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 from itertools import chain
-
 from django.db import migrations
 
 
@@ -102,7 +101,6 @@ def populate_permissions_lists(apps):
 
 def add_group_permissions_data(apps, schema_editor):
     groups_initialization_list = populate_permissions_lists(apps)
-
     group_model_class = apps.get_model('auth', 'Group')
     for group in groups_initialization_list:
         if group['permissions_list'] is not None:
@@ -115,7 +113,6 @@ def add_group_permissions_data(apps, schema_editor):
 
 def remove_group_permissions_data(apps, schema_editor):
     groups_initialization_list = populate_permissions_lists(apps)
-
     group_model_class = apps.get_model('auth', 'Group')
     for group in groups_initialization_list:
         if group['permissions_list'] is not None:
