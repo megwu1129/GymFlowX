@@ -4,13 +4,24 @@
     Membership List
 {% endblock %}
 
-{% block content %}
+{% block create_button %}
+    {% if perms.workoutinfo.add_membership %}
+        <a href="{% url 'workoutinfo_membership_create_urlpattern' %}"
+           class="button button-primary">
+            Create New Membership</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
     <h2>Membership List</h2>
-    <div>
+    {% if perms.workoutinfo.add_membership %}
+    <div class="mobile">
       <a href="{% url 'workoutinfo_membership_create_urlpattern' %}"
       class="button button-primary">
         Create New Membership</a>
     </div>
+    {% endif %}
+
     <ul>
         {% for membership in membership_list %}
             <li>

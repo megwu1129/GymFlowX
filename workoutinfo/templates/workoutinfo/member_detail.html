@@ -5,95 +5,105 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ member }}</h2>
-    <ul class="ezu-button-list">
-        <li>
-          <a href="{{ member.get_update_url }}"
-             class="button button-primary">
-            Edit Member</a></li>
-        <li>
-          <a href="{{ member.get_delete_url }}"
-             class="button button-primary">
-            Delete Member</a></li>
-    </ul>
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ member }}</h2>
+                <ul class="inline">
+                    {% if perms.workoutinfo.change_member %}
+                        <li>
+                            <a href="{{ member.get_update_url }}"
+                             class="button button-primary">
+                            Edit Member</a></li>
+                    {% endif %}
+                    {% if perms.workoutinfo.delete_member %}
+                        <li>
+                            <a href="{{ member.get_delete_url }}"
+                             class="button button-primary">
+                            Delete Member</a></li>
+                    {% endif %}
+                 </ul>
 
-    <section>
-        <table>
-            <tr>
-                <th>First Name:</th>
-                <td>{{ member.first_name }}</td>
-            </tr>
-            <tr>
-                <th>Last Name:</th>
-                <td>{{ member.last_name }}</td>
-            </tr>
-            {% if member.disambiguator %}
-                <tr>
-                    <th>Disambiguator:</th>
-                    <td>{{ member.disambiguator }}</td>
-                </tr>
-            {% endif %}
-            <tr>
-                <th>Gender:</th>
-                <td>{{ member.gender }}</td>
-            </tr>
-            <tr>
-                <th>Phone Number:</th>
-                <td>{{ member.phone_number }}</td>
-            </tr>
-        </table>
-    </section>
+                <section>
+                    <table>
+                        <tr>
+                            <th>First Name:</th>
+                            <td>{{ member.first_name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>{{ member.last_name }}</td>
+                        </tr>
+                        {% if member.disambiguator %}
+                            <tr>
+                                <th>Disambiguator:</th>
+                                <td>{{ member.disambiguator }}</td>
+                            </tr>
+                        {% endif %}
+                        <tr>
+                            <th>Gender:</th>
+                            <td>{{ member.gender }}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone Number:</th>
+                            <td>{{ member.phone_number }}</td>
+                        </tr>
+                    </table>
+                </section>
 
-    <section>
-        <h3>Membership</h3>
-        <ul>
-            {% for membership in membership_list %}
-                <li>
-                    <a href="{{ membership.get_absolute_url }}">{{ membership }}</a>
-                </li>
-            {% empty %}
-                <li><em>There are currently no memberships for this member.</em></li>
-            {% endfor %}
-        </ul>
-    </section>
+                <section>
+                    <h3>Membership</h3>
+                    <ul>
+                        {% for membership in membership_list %}
+                            <li>
+                                <a href="{{ membership.get_absolute_url }}">{{ membership }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no memberships for this member.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
 
-    <section>
-        <h3>Workout Plan</h3>
-        <ul>
-            {% for workoutplan in workoutplan_list %}
-                <li>
-                    <a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a>
-                </li>
-            {% empty %}
-                <li><em>There are currently no workoutplans for this member.</em></li>
-            {% endfor %}
-        </ul>
-    </section>
+                <section>
+                    <h3>Workout Plan</h3>
+                    <ul>
+                        {% for workoutplan in workoutplan_list %}
+                            <li>
+                                <a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no workoutplans for this member.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
 
-    <section>
-        <h3>Workout</h3>
-        <ul>
-            {% for workout in workout_list %}
-                <li>
-                    <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>
-                </li>
-            {% empty %}
-                <li><em>There are currently no workouts for this member.</em></li>
-            {% endfor %}
-        </ul>
-    </section>
+                <section>
+                    <h3>Workout</h3>
+                    <ul>
+                        {% for workout in workout_list %}
+                            <li>
+                                <a href="{{ workout.get_absolute_url }}">{{ workout }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no workouts for this member.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
 
-    <section>
-        <h3>Nutrition Plan</h3>
-        <ul>
-            {% for nutritionplan in nutritionplan_list %}
-                <li>
-                    <a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a>
-                </li>
-            {% empty %}
-                <li><em>There are currently no nutritionplans for this member.</em></li>
-            {% endfor %}
-        </ul>
-    </section>
+                <section>
+                    <h3>Nutrition Plan</h3>
+                    <ul>
+                        {% for nutritionplan in nutritionplan_list %}
+                            <li>
+                                <a href="{{ nutritionplan.get_absolute_url }}">{{ nutritionplan }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no nutritionplans for this member.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </div>
+        </div> <!-- row -->
+    </article>
 
 {% endblock %}

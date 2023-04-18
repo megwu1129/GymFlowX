@@ -4,13 +4,24 @@
     Workout Plan List
 {% endblock %}
 
-{% block content %}
+{% block create_button %}
+    {% if perms.workoutinfo.add_workoutplan %}
+        <a href="{% url 'workoutinfo_workoutplan_create_urlpattern' %}"
+           class="button button-primary">
+            Create New Workout Plan</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
     <h2>Workout Plan List</h2>
-    <div>
-      <a href="{% url 'workoutinfo_workoutplan_create_urlpattern' %}"
-      class="button button-primary">
-        Create New Workout Plan</a>
-    </div>
+    {% if perms.workoutinfo.add_workoutplan %}
+        <div class="mobile">
+          <a href="{% url 'workoutinfo_workoutplan_create_urlpattern' %}"
+          class="button button-primary">
+            Create New Workout Plan</a>
+        </div>
+    {% endif %}
+
     <ul>
         {% for workoutplan in workoutplan_list %}
             <li>

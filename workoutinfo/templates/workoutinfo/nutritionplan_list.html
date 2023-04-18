@@ -4,13 +4,24 @@
     Nutrition Plan List
 {% endblock %}
 
-{% block content %}
+{% block create_button %}
+    {% if perms.workoutinfo.add_nutritionplan %}
+        <a href="{% url 'workoutinfo_nutritionplan_create_urlpattern' %}"
+           class="button button-primary">
+            Create New Nutrition Plan</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
     <h2>Nutrition Plan List</h2>
-    <div>
-      <a href="{% url 'workoutinfo_nutritionplan_create_urlpattern' %}"
-      class="button button-primary">
-        Create New Nutrition Plan</a>
-    </div>
+    {% if perms.workoutinfo.add_nutritionplan %}
+        <div class="mobile">
+          <a href="{% url 'workoutinfo_nutritionplan_create_urlpattern' %}"
+          class="button button-primary">
+            Create New Nutrition Plan</a>
+        </div>
+    {% endif %}
+
     <ul>
         {% for nutritionplan in nutritionplan_list %}
             <li>

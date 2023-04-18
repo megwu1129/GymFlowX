@@ -5,43 +5,50 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ nutritionplan }}</h2>
-    <ul class="ezu-button-list">
-        <li>
-          <a href="{{ nutritionplan.get_update_url }}"
-             class="button button-primary">
-            Edit Nutrition Plan</a></li>
-        <li>
-          <a href="{{ nutritionplan.get_delete_url }}"
-             class="button button-primary">
-            Delete Nutrition Plan</a></li>
-    </ul>
-    <section>
-        <table>
-            <tr>
-                <th>Member:</th>
-                    <td><a href="{{ member.get_absolute_url }}">{{ member }}</a></td>
-            </tr>
-            <tr>
-                <th>Trainer:</th>
-                <td><a href="{{ trainer.get_absolute_url }}">{{ trainer }}</a></td>
-            </tr>
-        </table>
-    </section>
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ nutritionplan }}</h2>
+                <ul class="inline">
+                    {% if perms.workoutinfo.change_nutritionplan %}
+                        <li>
+                          <a href="{{ nutritionplan.get_update_url }}"
+                             class="button button-primary">
+                            Edit Nutrition Plan</a></li>
+                    {% endif %}
+                    {% if perms.workoutinfo.delete_nutritionplan %}
+                        <li>
+                          <a href="{{ nutritionplan.get_delete_url }}"
+                             class="button button-primary">
+                            Delete Nutrition Plan</a></li>
+                    {% endif %}
+                </ul>
+                <section>
+                    <table>
+                        <tr>
+                            <th>Member:</th>
+                                <td><a href="{{ member.get_absolute_url }}">{{ member }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Trainer:</th>
+                            <td><a href="{{ trainer.get_absolute_url }}">{{ trainer }}</a></td>
+                        </tr>
+                    </table>
+                </section>
 
-    <section>
-        <table>
-            <tr>
-                <th>Nutrition Name:</th>
-                <td>{{ nutritionplan.name }}</td>
-            </tr>
-            <tr>
-                <th>Description:</th>
-                <td>{{ nutritionplan.description }}</td>
-            </tr>
-        </table>
-    </section>
-
-
-
+                <section>
+                    <table>
+                        <tr>
+                            <th>Nutrition Name:</th>
+                            <td>{{ nutritionplan.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description:</th>
+                            <td>{{ nutritionplan.description }}</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div> <!-- row -->
+    </article>
 {% endblock %}

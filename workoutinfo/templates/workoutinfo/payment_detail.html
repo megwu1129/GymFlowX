@@ -5,41 +5,51 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ payment }}</h2>
-    <ul class="ezu-button-list">
-        <li>
-          <a href="{{ payment.get_update_url }}"
-             class="button button-primary">
-            Edit Payment</a></li>
-        <li>
-          <a href="{{ payment.get_delete_url }}"
-             class="button button-primary">
-            Delete Payment</a></li>
-    </ul>
-    <section>
-        <table>
-            <tr>
-                <th>Membership:</th>
-                <td><a href="{{ membership.get_absolute_url }}">{{ membership }}</a></td>
-            </tr>
-        </table>
-    </section>
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ payment }}</h2>
+                <ul class="inline">
+                    {% if perms.workoutinfo.change_payment %}
+                        <li>
+                          <a href="{{ payment.get_update_url }}"
+                             class="button button-primary">
+                            Edit Payment</a></li>
+                    {% endif %}
 
-    <section>
-        <table>
-            <tr>
-                <th>Amount:</th>
-                <td>{{ payment.amount }}</td>
-            </tr>
-            <tr>
-                <th>Payment Method:</th>
-                <td>{{ payment.payment_method }}</td>
-            </tr>
-            <tr>
-                <th>Payment Date:</th>
-                <td>{{ payment.payment_date }}</td>
-            </tr>
-        </table>
-    </section>
+                    {% if perms.workoutinfo.delete_payment %}
+                        <li>
+                          <a href="{{ payment.get_delete_url }}"
+                             class="button button-primary">
+                            Delete Payment</a></li>
+                    {% endif %}
+                </ul>
+                <section>
+                    <table>
+                        <tr>
+                            <th>Membership:</th>
+                            <td><a href="{{ membership.get_absolute_url }}">{{ membership }}</a></td>
+                        </tr>
+                    </table>
+                </section>
 
+                <section>
+                    <table>
+                        <tr>
+                            <th>Amount:</th>
+                            <td>{{ payment.amount }}</td>
+                        </tr>
+                        <tr>
+                            <th>Payment Method:</th>
+                            <td>{{ payment.payment_method }}</td>
+                        </tr>
+                        <tr>
+                            <th>Payment Date:</th>
+                            <td>{{ payment.payment_date }}</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div> <!-- row -->
+    </article>
 {% endblock %}

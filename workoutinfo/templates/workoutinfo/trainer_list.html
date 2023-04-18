@@ -4,13 +4,23 @@
     Trainer List
 {% endblock %}
 
-{% block content %}
+{% block create_button %}
+    {% if perms.workoutinfo.add_trainer %}
+        <a href="{% url 'workoutinfo_trainer_create_urlpattern' %}"
+           class="button button-primary">
+            Create New Trainer</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
     <h2>Trainer List</h2>
-    <div>
+    {% if perms.workoutinfo.add_trainer %}
+        <div class="mobile">
       <a href="{% url 'workoutinfo_trainer_create_urlpattern' %}"
       class="button button-primary">
         Create New Trainer</a>
     </div>
+    {% endif %}
     <ul>
         {% for trainer in trainer_list %}
             <li>

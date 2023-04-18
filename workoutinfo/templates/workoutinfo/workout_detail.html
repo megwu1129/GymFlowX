@@ -5,55 +5,64 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ workout }}</h2>
-    <ul class="ezu-button-list">
-        <li>
-          <a href="{{ workout.get_update_url }}"
-             class="button button-primary">
-            Edit Workout</a></li>
-        <li>
-          <a href="{{ workout.get_delete_url }}"
-             class="button button-primary">
-            Delete Workout</a></li>
-    </ul>
-    <section>
-        <table>
-            <tr>
-                <th>Member:</th>
-                <td><a href="{{ member.get_absolute_url }}">{{ member }}</a></td>
-            </tr>
-            <tr>
-                <th>Trainer:</th>
-                <td><a href="{{ trainer.get_absolute_url }}">{{ trainer }}</a></td>
-            </tr>
-            <tr>
-                <th>Workout Plan:</th>
-                <td><a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a></td>
-            </tr>
-        </table>
-    </section>
+        <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ workout }}</h2>
+                <ul class="inline">
+                    {% if perms.workoutinfo.change_workout %}
+                        <li>
+                          <a href="{{ workout.get_update_url }}"
+                             class="button button-primary">
+                            Edit Workout</a></li>
+                    {% endif %}
+                    {% if perms.workoutinfo.delete_workout %}
+                        <li>
+                            <a href="{{ workout.get_delete_url }}"
+                             class="button button-primary">
+                            Delete Workout</a></li>
+                    {% endif %}
 
-    <section>
-        <table>
-            <tr>
-                <th>Workout Date:</th>
-                <td>{{ date }}</td>
-            </tr>
-            <tr>
-                <th>Name:</th>
-                <td>{{ name }}</td>
-            </tr>
-            <tr>
-                <th>Description:</th>
-                <td>{{ description }}</td>
-            </tr>
-            <tr>
-                <th>Duration:</th>
-                <td>{{ duration }}</td>
-            </tr>
-        </table>
-    </section>
+                </ul>
+                <section>
+                    <table>
+                        <tr>
+                            <th>Member:</th>
+                            <td><a href="{{ member.get_absolute_url }}">{{ member }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Trainer:</th>
+                            <td><a href="{{ trainer.get_absolute_url }}">{{ trainer }}</a></td>
+                        </tr>
+                        <tr>
+                            <th>Workout Plan:</th>
+                            <td><a href="{{ workoutplan.get_absolute_url }}">{{ workoutplan }}</a></td>
+                        </tr>
+                    </table>
+                </section>
 
-
+                <section>
+                    <table>
+                        <tr>
+                            <th>Workout Date:</th>
+                            <td>{{ date }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name:</th>
+                            <td>{{ name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description:</th>
+                            <td>{{ description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Duration:</th>
+                            <td>{{ duration }}</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div> <!-- row -->
+    </article>
 
 {% endblock %}

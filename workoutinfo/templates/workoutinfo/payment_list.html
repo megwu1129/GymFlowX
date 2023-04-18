@@ -4,13 +4,24 @@
     Payment List
 {% endblock %}
 
-{% block content %}
+{% block create_button %}
+    {% if perms.workoutinfo.add_payment %}
+        <a href="{% url 'workoutinfo_payment_create_urlpattern' %}"
+           class="button button-primary">
+            Create New Payment</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content %}
     <h2>Payment List</h2>
-    <div>
-      <a href="{% url 'workoutinfo_payment_create_urlpattern' %}"
-      class="button button-primary">
-        Create New Payment</a>
-    </div>
+    {% if perms.workoutinfo.add_payment %}
+        <div class="mobile">
+          <a href="{% url 'workoutinfo_payment_create_urlpattern' %}"
+          class="button button-primary">
+            Create New Payment</a>
+         </div>
+    {% endif %}
+
     <ul>
         {% for payment in payment_list %}
             <li>
