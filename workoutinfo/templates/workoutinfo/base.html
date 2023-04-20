@@ -46,43 +46,43 @@
     </header>
     <nav>
         <ul>
-            {% if perms.courseinfo.view_member %}
+            {% if perms.workoutinfo.view_member %}
                 <li>
                     <a href="{% url 'workoutinfo_member_list_urlpattern' %}">
                         Members</a></li>
             {% endif %}
 
-            {% if perms.courseinfo.view_trainer %}
+            {% if perms.workoutinfo.view_trainer %}
                 <li>
                     <a href="{% url 'workoutinfo_trainer_list_urlpattern' %}">
                         Trainers</a></li>
             {% endif %}
 
-            {% if perms.courseinfo.view_workoutplan %}
+            {% if perms.workoutinfo.view_workoutplan %}
                 <li>
                     <a href="{% url 'workoutinfo_workoutplan_list_urlpattern' %}">
                         Workout Plans</a></li>
             {% endif %}
 
-            {% if perms.courseinfo.view_workout %}
+            {% if perms.workoutinfo.view_workout %}
                 <li>
                     <a href="{% url 'workoutinfo_workout_list_urlpattern' %}">
                     Workouts</a></li>
             {% endif %}
 
-            {% if perms.courseinfo.view_nutritionplan %}
+            {% if perms.workoutinfo.view_nutritionplan %}
                 <li>
                     <a href="{% url 'workoutinfo_nutritionplan_list_urlpattern' %}">
                     Nutrition Plans</a></li>
             {% endif %}
 
-            {% if perms.courseinfo.view_membership %}
+            {% if perms.workoutinfo.view_membership %}
                 <li>
                     <a href="{% url 'workoutinfo_membership_list_urlpattern' %}">
                         Memberships</a></li>
             {% endif %}
 
-            {% if perms.courseinfo.view_payment %}
+            {% if perms.workoutinfo.view_payment %}
                 <li>
                     <a href="{% url 'workoutinfo_payment_list_urlpattern' %}">
                         Payments</a></li>
