@@ -19,10 +19,17 @@ GymFlowX is an administrative interface for the management of the gym members, t
 - Log in
 ![Screen Shot 2023-05-02 at 2 47 26 PM](https://user-images.githubusercontent.com/73263355/235770006-5b31f2cf-67c0-4ca7-852d-399dc3c55e88.png)
 
-- Create a member
+- About page
+![Screen Shot 2023-05-02 at 2 48 09 PM](https://user-images.githubusercontent.com/73263355/235770151-3dfda1ea-c612-4206-8b37-4f983239af01.png)
+
+- Create member
 ![Screen Shot 2023-05-02 at 2 46 18 PM](https://user-images.githubusercontent.com/73263355/235769804-da17b5f1-f1bb-4198-aead-375d28c341af.png)
 
+- Create workout plan
+![Screen Shot 2023-05-02 at 2 48 48 PM](https://user-images.githubusercontent.com/73263355/235770281-d7110b7d-abc5-48a8-9289-a156ba444155.png)
 
+- Create payment
+![Screen Shot 2023-05-02 at 2 49 19 PM](https://user-images.githubusercontent.com/73263355/235770396-33e76324-7a74-4241-b838-7a10ab2d16ae.png)
 
 ## ER Diagram
 
