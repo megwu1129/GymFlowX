@@ -15,6 +15,15 @@ GymFlowX is an administrative interface for the management of the gym members, t
 6. View/Add/Update/Delete Workout
 7. View/Add/Update/Delete Nutrition Plan
 
+## Screenshots
+- Log in
+![Screen Shot 2023-05-02 at 2 47 26 PM](https://user-images.githubusercontent.com/73263355/235770006-5b31f2cf-67c0-4ca7-852d-399dc3c55e88.png)
+
+- Create a member
+![Screen Shot 2023-05-02 at 2 46 18 PM](https://user-images.githubusercontent.com/73263355/235769804-da17b5f1-f1bb-4198-aead-375d28c341af.png)
+
+
+
 ## ER Diagram
 
 ![ER Diagram](https://user-images.githubusercontent.com/73263355/235767261-dee9dbb7-bc94-4a1b-88a5-6d7d7369df20.jpg)
