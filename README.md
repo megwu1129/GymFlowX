@@ -25,8 +25,14 @@ GymFlowX is an administrative interface for the management of the gym members, t
 - Create member
 ![Screen Shot 2023-05-02 at 2 46 18 PM](https://user-images.githubusercontent.com/73263355/235769804-da17b5f1-f1bb-4198-aead-375d28c341af.png)
 
+- Create membership
+![Screen Shot 2023-05-02 at 2 50 43 PM](https://user-images.githubusercontent.com/73263355/235770682-330451b8-0b83-407a-8a32-5414bf7fa53d.png)
+
 - Create workout plan
 ![Screen Shot 2023-05-02 at 2 48 48 PM](https://user-images.githubusercontent.com/73263355/235770281-d7110b7d-abc5-48a8-9289-a156ba444155.png)
+
+- Create nutrition plan
+![Screen Shot 2023-05-02 at 2 51 10 PM](https://user-images.githubusercontent.com/73263355/235770774-f3e0002c-8eab-4479-ae93-63f050343ce0.png)
 
 - Create payment
 ![Screen Shot 2023-05-02 at 2 49 19 PM](https://user-images.githubusercontent.com/73263355/235770396-33e76324-7a74-4241-b838-7a10ab2d16ae.png)
