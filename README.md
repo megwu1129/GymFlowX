@@ -6,7 +6,7 @@ GymFlowX is an administrative interface for the management of the gym members, t
 2. Helping trainers manage their customers and workout sessions
 3. Allowing gym members to have access to their workout plans, workouts, and nutrition plans easily
 
-## Features
+## Functionality
 1. View/Add/Update/Delete Member
 2. View/Add/Update/Delete Membership
 3. View/Add/Update/Delete Trainer
